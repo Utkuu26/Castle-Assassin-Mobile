@@ -16,12 +16,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        moveSpeed = 0.4f;
+        moveSpeed = 4f;
         //meshPlayer = GetComponent<MeshCollider>();
         _charController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
 
-        // Ensure the "Joystick" GameObject is present in the scene
         GameObject joystickObject = GameObject.Find("Joystick");
 
         if (joystickObject != null)
