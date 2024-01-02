@@ -7,10 +7,12 @@ public class Hide : MonoBehaviour
     private bool isHidden;
     private bool isJoystickEnabled = true; // Joystick etkileşimini kontrol etmek için
     public GameObject player;
+    public GameObject barrelTxt;
 
     void Start()
     {
         isHidden = false;
+        barrelTxt.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,6 +20,7 @@ public class Hide : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             HidePlayer();
+            barrelTxt.SetActive(true);
             StartCoroutine(DisableJoystickForDuration(1f)); // Joystick'i belirli bir süre için devre dışı bırak
         }
     }
@@ -35,6 +38,7 @@ public class Hide : MonoBehaviour
         if (isHidden && Input.GetMouseButton(0) && isJoystickEnabled)
         {
             ShowPlayer();
+            barrelTxt.SetActive(false);
         }
     }
 
