@@ -26,14 +26,12 @@ public class Hide : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Burada sadece karakterin varilden çıktığını belirten bir işaret bırakıyoruz
             isHidden = false;
         }
     }
 
     void Update()
     {
-        // Update fonksiyonunda kontrolü yaparak karakterin varilden çıkmasını sağlıyoruz
         if (isHidden && Input.GetMouseButton(0) && isJoystickEnabled)
         {
             ShowPlayer();
@@ -43,10 +41,8 @@ public class Hide : MonoBehaviour
     private void HidePlayer()
     {
         isHidden = true;
-        // Make the player invisible
         player.SetActive(false);
-
-        // Işınlanma
+    
         if (teleportTarget != null)
         {
             player.transform.position = teleportTarget.position;
@@ -56,7 +52,6 @@ public class Hide : MonoBehaviour
     private void ShowPlayer()
     {
         isHidden = false;
-        // Make the player visible again
         player.SetActive(true);
     }
 
