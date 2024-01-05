@@ -32,16 +32,26 @@ public class EnemyPatrol : MonoBehaviour
 
     IEnumerator MoveToNextPoint()
     {
-        while (transform.position != patrolPoints[currentPoint].position)
+        Vector3 targetPosition = patrolPoints[currentPoint].position;
+
+        while (transform.position != targetPosition)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, patrolPoints[currentPoint].position);
+            float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
             float lerpFactor = Mathf.Clamp01(distanceToTarget / maxPatrolSpeed);
 
             float targetSpeed = Mathf.Lerp(minPatrolSpeed, maxPatrolSpeed, lerpFactor);
             currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, accelerationRate * Time.deltaTime);
 
             float step = currentSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPoint].position, step);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+
+            // Yüzünü hareket yönüne döndür
+            Vector3 moveDirection = (targetPosition - transform.position).normalized;
+            if (moveDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10.0f);
+            }
 
             yield return null;
         }
