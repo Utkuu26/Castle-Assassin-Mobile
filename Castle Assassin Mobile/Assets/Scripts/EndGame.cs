@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndGame : MonoBehaviour
 {
@@ -8,11 +9,12 @@ public class EndGame : MonoBehaviour
     public GameObject nextLevel;
     public GameObject currentLevel;
     public CharacterController characterController;
-
+    public Button continueBtn;
 
     void Start() 
     {
         nextLevel.SetActive(false);
+        continueBtn.onClick.AddListener(NextLevel);
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,6 +32,7 @@ public class EndGame : MonoBehaviour
         {
             nextLevel.SetActive(true);
             currentLevel.SetActive(false);
+            endGamePanel.SetActive(false);
             characterController.enabled = true;
         }
     }
