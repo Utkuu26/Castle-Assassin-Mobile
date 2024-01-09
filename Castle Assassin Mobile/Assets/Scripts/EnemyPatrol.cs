@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -11,12 +12,17 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private float waitTime = 1.0f;
 
     float currentSpeed;
+    private Animator enemyAnimator;
+    private Transform textTransform;
 
     // Start is called before the first frame update
     void Start()
     {
         currentPoint = 0;
         currentSpeed = minPatrolSpeed;
+
+        enemyAnimator = GetComponent<Animator>();
+        textTransform = transform.Find("EnemyTxt").transform;
 
         StartCoroutine(PatrolRoutine());
     }
@@ -34,6 +40,8 @@ public class EnemyPatrol : MonoBehaviour
     {
         Vector3 targetPosition = patrolPoints[currentPoint].position;
 
+        enemyAnimator.SetBool("IsWalking", true);
+
         while (transform.position != targetPosition)
         {
             float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
@@ -45,7 +53,6 @@ public class EnemyPatrol : MonoBehaviour
             float step = currentSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
 
-            // Yüzünü hareket yönüne döndür
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
             if (moveDirection != Vector3.zero)
             {
@@ -53,8 +60,14 @@ public class EnemyPatrol : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10.0f);
             }
 
+            // Text'in konumunu güncelle (Y ekseni sabit kalmalı)
+            Vector3 textPosition = new Vector3(textTransform.position.x, textTransform.position.y, textTransform.position.z);
+            textTransform.position = textPosition;
+
             yield return null;
         }
+
+        enemyAnimator.SetBool("IsWalking", false);
 
         currentPoint = (currentPoint + 1) % patrolPoints.Length;
     }
