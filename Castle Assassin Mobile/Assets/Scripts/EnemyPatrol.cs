@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -15,7 +14,8 @@ public class EnemyPatrol : MonoBehaviour
     private Animator enemyAnimator;
     private Transform textTransform;
 
-    // Start is called before the first frame update
+    private bool isPatrolling = true;
+
     void Start()
     {
         currentPoint = 0;
@@ -27,9 +27,16 @@ public class EnemyPatrol : MonoBehaviour
         StartCoroutine(PatrolRoutine());
     }
 
+    public void StopPatrol()
+    {
+        isPatrolling = false;
+        enemyAnimator.SetBool("IsWalking", false);
+        StopAllCoroutines();
+    }
+
     IEnumerator PatrolRoutine()
     {
-        while (true)
+        while (isPatrolling)
         {
             yield return MoveToNextPoint();
             yield return new WaitForSeconds(waitTime);

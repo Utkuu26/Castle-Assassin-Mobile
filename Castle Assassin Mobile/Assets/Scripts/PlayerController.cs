@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_mngrJoystick != null)
+       if (_mngrJoystick != null && _charController != null && _charController.enabled)
         {
             vMovement = new Vector3(inputX * moveSpeed, 0, inputZ * moveSpeed);
             _charController.Move(vMovement * Time.deltaTime);

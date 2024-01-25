@@ -10,11 +10,18 @@ public class EndGame : MonoBehaviour
     public GameObject currentLevel;
     public CharacterController characterController;
     public Button continueBtn;
+    public GameObject playerGameObject;
+    public Transform nextLevelSpawnPoint;
 
     void Start() 
     {
         nextLevel.SetActive(false);
         continueBtn.onClick.AddListener(NextLevel);
+
+        if (playerGameObject == null)
+        {
+            playerGameObject = GameObject.FindWithTag("Player");
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,12 +35,18 @@ public class EndGame : MonoBehaviour
 
     void NextLevel()
     {
-        if (nextLevel != null)
+        if (playerGameObject != null && nextLevelSpawnPoint != null)
         {
-            nextLevel.SetActive(true);
-            currentLevel.SetActive(false);
-            endGamePanel.SetActive(false);
-            characterController.enabled = true;
+            playerGameObject.transform.position = nextLevelSpawnPoint.position;
         }
+        else
+        {
+            Debug.LogError("Player GameObject or Target Transform is not assigned!");
+        }
+        
+        nextLevel.SetActive(true);
+        endGamePanel.SetActive(false);
+        characterController.enabled = true;
+        currentLevel.SetActive(false);
     }
 }

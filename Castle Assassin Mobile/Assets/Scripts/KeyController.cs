@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeyController : MonoBehaviour
 {
-   public GameObject uiPanel;
+    public GameObject uiPanel;
     public GameObject keyImg1;
     public GameObject keyImg2;
 
