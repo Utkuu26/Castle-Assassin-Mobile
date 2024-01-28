@@ -9,16 +9,12 @@ public class EnemyAttack : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("InvisibleHand")) 
+        if (other.CompareTag("EnemyTrigger")) 
         {
             if (enemyPatrol != null)
             {
                 enemyPatrol.StopPatrol();
-            }
-
-            if (enemyAnimator != null)
-            {
-                enemyAnimator.SetTrigger("Attack");
+                enemyAnimator.SetBool("isEnemyAttack", true);
             }
         }
     }
