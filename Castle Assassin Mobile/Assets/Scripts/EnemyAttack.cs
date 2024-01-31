@@ -6,6 +6,9 @@ using TMPro;
 
 public class EnemyAttack : MonoBehaviour 
 {
+    public delegate void EnemieDiedHandler(int diedEnemies);
+    public static event EnemieDiedHandler OnEnemyDied;
+    
     public EnemyPatrol enemyPatrol;
     public Animator enemyAnimator;
     public Animator playerAnimator;
@@ -14,6 +17,7 @@ public class EnemyAttack : MonoBehaviour
     public int enemyLvl; 
     public TextMeshProUGUI enemyLvlTxt; 
     public PlayerLevel playerLevel;
+    public int deadEnemies = 0;
 
     void Start()
     {
@@ -29,6 +33,7 @@ public class EnemyAttack : MonoBehaviour
             {
                 enemyPatrol.StopPatrol();
                 enemyAnimator.SetBool("isEnemyAttack", true);
+                OnEnemyDied(deadEnemies);
 
                 characterController.enabled = false;
                 playerAnimator.SetBool("isPlayerDying", true);

@@ -11,7 +11,9 @@ public class EndGame : MonoBehaviour
     public CharacterController characterController;
     public Button continueBtn;
     public GameObject playerGameObject;
-    public Transform nextLevelSpawnPoint;
+    //public Transform nextLevelSpawnPoint;
+    public Transform[] nextLevelSpawnPoints;
+    private int currentSpawnPointIndex = 0;
     public LevelCounter levelCounter;
 
     void Start() 
@@ -37,15 +39,12 @@ public class EndGame : MonoBehaviour
 
     void NextLevel()
     {
-        if (playerGameObject != null && nextLevelSpawnPoint != null)
-        {
-            playerGameObject.transform.position = nextLevelSpawnPoint.position;
-        }
-        else
-        {
-            Debug.LogError("Player GameObject or Target Transform is not assigned!");
-        }
+        //playerGameObject.transform.position = nextLevelSpawnPoint.position;
         
+        Transform nextSpawnPoint = nextLevelSpawnPoints[currentSpawnPointIndex];
+        playerGameObject.transform.position = nextSpawnPoint.position;
+        currentSpawnPointIndex = (currentSpawnPointIndex + 1) % nextLevelSpawnPoints.Length;
+
         levelCounter.UpdateLevelCounter();
         nextLevel.SetActive(true);
         endGamePanel.SetActive(false);
