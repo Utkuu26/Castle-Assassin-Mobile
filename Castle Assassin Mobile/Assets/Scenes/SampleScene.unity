@@ -9969,6 +9969,7 @@ GameObject:
   - component: {fileID: 807479561}
   - component: {fileID: 807479563}
   - component: {fileID: 807479562}
+  - component: {fileID: 807479564}
   m_Layer: 5
   m_Name: LevelAreaImg
   m_TagString: Untagged
@@ -10035,6 +10036,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807479560}
   m_CullTransparentMesh: 1
+--- !u!114 &807479564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807479560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db80f61d997400b42925ca8baa3fbc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevelTxt: {fileID: 425293534}
 --- !u!1 &809259831
 GameObject:
   m_ObjectHideFlags: 0
@@ -25238,7 +25252,7 @@ PrefabInstance:
     - target: {fileID: 7956455999299574918, guid: c25276f00ff3fe74d9b86fd8eb041adf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7956455999299574918, guid: c25276f00ff3fe74d9b86fd8eb041adf,
         type: 3}
@@ -26462,6 +26476,16 @@ PrefabInstance:
       propertyPath: endGamePanel
       value: 
       objectReference: {fileID: 849383520}
+    - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
+        type: 3}
+      propertyPath: levelCounter
+      value: 
+      objectReference: {fileID: 807479564}
+    - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
+        type: 3}
+      propertyPath: currentLevelTxt
+      value: 
+      objectReference: {fileID: 425293534}
     - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
         type: 3}
       propertyPath: playerGameObject

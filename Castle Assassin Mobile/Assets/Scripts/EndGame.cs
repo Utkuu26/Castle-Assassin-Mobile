@@ -12,6 +12,7 @@ public class EndGame : MonoBehaviour
     public Button continueBtn;
     public GameObject playerGameObject;
     public Transform nextLevelSpawnPoint;
+    public LevelCounter levelCounter;
 
     void Start() 
     {
@@ -44,6 +45,7 @@ public class EndGame : MonoBehaviour
             Debug.LogError("Player GameObject or Target Transform is not assigned!");
         }
         
+        levelCounter.UpdateLevelCounter();
         nextLevel.SetActive(true);
         endGamePanel.SetActive(false);
         characterController.enabled = true;
