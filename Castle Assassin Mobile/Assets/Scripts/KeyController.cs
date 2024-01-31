@@ -12,6 +12,8 @@ public class KeyController : MonoBehaviour
     private bool key1Collected = false;
     private bool key2Collected = false;
 
+    public bool isDoorLocked = true;
+
     void Start()
     {
         uiPanel.SetActive(false);
@@ -32,6 +34,7 @@ public class KeyController : MonoBehaviour
             }
             else if (gameObject.CompareTag("Key2") && !key2Collected)
             {
+                isDoorLocked = false;
                 key2Collected = true;
                 keyImg2.SetActive(true);
                 OpenUIPanel();
@@ -47,4 +50,5 @@ public class KeyController : MonoBehaviour
             uiPanel.SetActive(true);
         }
     }
+
 }
