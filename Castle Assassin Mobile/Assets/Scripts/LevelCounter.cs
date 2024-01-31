@@ -7,17 +7,23 @@ using TMPro;
 public class LevelCounter : MonoBehaviour 
 {
     public TextMeshProUGUI currentLevelTxt;
-    private int currentLevelNo = 1;
+    public TextMeshProUGUI winLevelTxt;
+    private int currentLevelNo = 0;
 
     void Start()
     {
-        currentLevelTxt.text = ("Level " + currentLevelNo);
+        currentLevelTxt.text = ("Level " + (currentLevelNo+1));
     }
 
     public void UpdateLevelCounter()
     {
+        currentLevelTxt.text = ("Level " + (currentLevelNo + 1));
+    }
+
+    public void UpdateWinScreenLevel()
+    {
         currentLevelNo ++;
-        currentLevelTxt.text = ("Level " + currentLevelNo);
+        winLevelTxt.text = ("CONGRATULATIONS\nYou Completed Level " + currentLevelNo);
     }
 
 }

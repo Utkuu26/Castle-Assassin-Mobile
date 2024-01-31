@@ -4519,8 +4519,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10049,6 +10049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevelTxt: {fileID: 425293534}
+  winLevelTxt: {fileID: 311957953}
 --- !u!1 &809259831
 GameObject:
   m_ObjectHideFlags: 0
@@ -14187,6 +14188,11 @@ PrefabInstance:
       objectReference: {fileID: 849383520}
     - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
         type: 3}
+      propertyPath: levelCounter
+      value: 
+      objectReference: {fileID: 807479564}
+    - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
+        type: 3}
       propertyPath: playerGameObject
       value: 
       objectReference: {fileID: 1919289514}
@@ -14715,6 +14721,11 @@ PrefabInstance:
       propertyPath: endGamePanel
       value: 
       objectReference: {fileID: 849383520}
+    - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
+        type: 3}
+      propertyPath: levelCounter
+      value: 
+      objectReference: {fileID: 807479564}
     - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
         type: 3}
       propertyPath: playerGameObject
@@ -25229,6 +25240,11 @@ PrefabInstance:
       propertyPath: endGamePanel
       value: 
       objectReference: {fileID: 849383520}
+    - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
+        type: 3}
+      propertyPath: levelCounter
+      value: 
+      objectReference: {fileID: 807479564}
     - target: {fileID: 4848655246314618580, guid: c25276f00ff3fe74d9b86fd8eb041adf,
         type: 3}
       propertyPath: playerGameObject

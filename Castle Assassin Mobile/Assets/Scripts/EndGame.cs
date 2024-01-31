@@ -31,6 +31,7 @@ public class EndGame : MonoBehaviour
         {
             characterController.enabled = false;
             endGamePanel.SetActive(true);
+            levelCounter.UpdateWinScreenLevel();
         }
     }
 
