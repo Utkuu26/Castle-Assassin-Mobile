@@ -52,4 +52,5 @@ public class EndGame : MonoBehaviour
         characterController.enabled = true;
         currentLevel.SetActive(false);
     }
+
 }

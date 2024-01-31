@@ -2047,7 +2047,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 98739415}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1440997859}
+        m_TargetAssemblyTypeName: EnemyAttack, Assembly-CSharp
+        m_MethodName: TryAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &98739415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11819,7 +11831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &945088505
 Transform:
   m_ObjectHideFlags: 0
@@ -16831,7 +16843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1374507882
 Transform:
   m_ObjectHideFlags: 0
@@ -17050,6 +17062,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPatrol: {fileID: 0}
   enemyAnimator: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  characterController: {fileID: 0}
+  loseGamePanel: {fileID: 0}
 --- !u!1 &1409572028
 GameObject:
   m_ObjectHideFlags: 0
@@ -17507,6 +17522,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPatrol: {fileID: 1440997857}
   enemyAnimator: {fileID: 1440997854}
+  playerAnimator: {fileID: 1919289516}
+  characterController: {fileID: 1919289517}
+  loseGamePanel: {fileID: 49465546}
 --- !u!54 &1440997860
 Rigidbody:
   m_ObjectHideFlags: 0
