@@ -9,7 +9,7 @@ public class LevelCounter : MonoBehaviour
     public TextMeshProUGUI currentLevelTxt;
     public TextMeshProUGUI winLevelTxt;
     private int currentLevelNo = 0;
-
+    
     void Start()
     {
         currentLevelTxt.text = ("Level " + (currentLevelNo+1));
@@ -18,6 +18,7 @@ public class LevelCounter : MonoBehaviour
     public void UpdateLevelCounter()
     {
         currentLevelTxt.text = ("Level " + (currentLevelNo + 1));
+        
     }
 
     public void UpdateWinScreenLevel()

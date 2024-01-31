@@ -12,7 +12,7 @@ public class EnemyPatrol : MonoBehaviour
 
     float currentSpeed;
     private Animator enemyAnimator;
-    private Transform textTransform;
+    //private Transform textTransform;
 
     private bool isPatrolling = true;
 
@@ -22,7 +22,7 @@ public class EnemyPatrol : MonoBehaviour
         currentSpeed = minPatrolSpeed;
 
         enemyAnimator = GetComponent<Animator>();
-        textTransform = transform.Find("EnemyTxt").transform;
+        //textTransform = transform.Find("EnemyTxt").transform;
 
         StartCoroutine(PatrolRoutine());
     }
@@ -68,8 +68,8 @@ public class EnemyPatrol : MonoBehaviour
             }
 
             // Text'in konumunu güncelle (Y ekseni sabit kalmalı)
-            Vector3 textPosition = new Vector3(textTransform.position.x, textTransform.position.y, textTransform.position.z);
-            textTransform.position = textPosition;
+           // Vector3 textPosition = new Vector3(textTransform.position.x, textTransform.position.y, textTransform.position.z);
+           // textTransform.position = textPosition;
 
             yield return null;
         }
