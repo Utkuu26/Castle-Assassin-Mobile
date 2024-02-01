@@ -10031,8 +10031,6 @@ MonoBehaviour:
   enemyLvlTxt: {fileID: 1017306043}
   playerLevel: {fileID: 1919289518}
   deadEnemies: 0
-  bloodParticklePrefab: {fileID: 2643841722616247181, guid: a3b0049c259efcb4a895a7d84d5c9cbe,
-    type: 3}
 --- !u!95 &747668316
 Animator:
   serializedVersion: 5
@@ -10860,8 +10858,6 @@ MonoBehaviour:
   enemyLvlTxt: {fileID: 1300241933}
   playerLevel: {fileID: 1919289518}
   deadEnemies: 0
-  bloodParticklePrefab: {fileID: 2643841722616247181, guid: a3b0049c259efcb4a895a7d84d5c9cbe,
-    type: 3}
 --- !u!114 &828646348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15308,7 +15304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bee77a61ef0894ab18b85d697a906e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - {fileID: 828646347}
+  - {fileID: 747668315}
   deadEnemies: 0
 --- !u!1 &1163838472
 GameObject:
@@ -18756,8 +18754,6 @@ MonoBehaviour:
   enemyLvlTxt: {fileID: 170264288}
   playerLevel: {fileID: 1919289518}
   deadEnemies: 0
-  bloodParticklePrefab: {fileID: 2643841722616247181, guid: a3b0049c259efcb4a895a7d84d5c9cbe,
-    type: 3}
 --- !u!54 &1440997860
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -53,6 +53,9 @@ public class EnemyAttack : MonoBehaviour
                 //SpawnBloodPartickle();
                 enemyAnimator.SetBool("isEnemyScared", true);
                 playerAnimator.SetBool("isPlayerAttacking", false);
+
+                deadEnemies++;
+                OnEnemyDied(deadEnemies);
                 
                 Invoke("EnemyKilled", 1f);
             }
