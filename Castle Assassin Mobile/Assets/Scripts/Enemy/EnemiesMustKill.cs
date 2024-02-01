@@ -6,9 +6,13 @@ public class EnemiesMustKill : MonoBehaviour
     public EnemyAttack[] enemies;
     public int deadEnemies = 0;
 
+    public GameObject lockParticklePrefab; 
+
+    public GameObject lockedImg1;
+    public GameObject lockedImg2;
+
     void Start()
     {
-        // Kapının Collider'ını al
         lockedDoorCollider = GetComponent<Collider>();
         lockedDoorCollider.enabled = true;
 
@@ -18,6 +22,12 @@ public class EnemiesMustKill : MonoBehaviour
             // Her düşmanın event'ine abone ol
             EnemyAttack.OnEnemyDied += UpdateDeadEnemies;
         }
+
+        if(lockedImg1 != null && lockedImg2 != null)
+        {
+            lockedImg1.SetActive(true);
+            lockedImg2.SetActive(true);
+        }
     }
 
     // EnemyAttack sınıfındaki event tetiklendiğinde çağrılacak fonksiyon
@@ -26,14 +36,17 @@ public class EnemiesMustKill : MonoBehaviour
         // deadEnemies değerini güncelle
         this.deadEnemies = diedEnemies;
 
-        // Diğer işlemleri burada gerçekleştir
-        // Örneğin:
-        // Debug.Log("Dead Enemies Updated: " + this.deadEnemies);
-
         // deadEnemies 2 ise kapıyı kapat
+        if (this.deadEnemies == 1)
+        {
+            SpawnUnlockPartickle();
+            lockedImg1.SetActive(false);
+        }
         if (this.deadEnemies == 2)
         {
             lockedDoorCollider.enabled = false;
+            SpawnUnlockPartickle();
+            lockedImg2.SetActive(false);
         }
     }
 
@@ -46,6 +59,20 @@ public class EnemiesMustKill : MonoBehaviour
             // Her düşmanın event'inden aboneliği kaldır
             EnemyAttack.OnEnemyDied -= UpdateDeadEnemies;
 
+        }
+    }
+
+    void SpawnUnlockPartickle()
+    {
+        if(!lockedImg1.activeSelf)
+        {
+            GameObject particleEffect = Instantiate(lockParticklePrefab, lockedImg1.transform.position, Quaternion.identity);
+            Destroy(particleEffect, 2f);
+        }
+        else if(!lockedImg2.activeSelf)
+        {
+            GameObject particleEffect = Instantiate(lockParticklePrefab, lockedImg2.transform.position, Quaternion.identity);
+            Destroy(particleEffect, 2f);
         }
     }
 }

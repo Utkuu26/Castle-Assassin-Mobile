@@ -44,7 +44,7 @@ public class KeyController : MonoBehaviour
                 OpenUIPanel();
                 gameObject.SetActive(false);
                 lockedImg1.SetActive(false);
-                SpawnStarPartickle();
+                SpawnUnlockPartickle();
             }
             else if (gameObject.CompareTag("Key2") && !key2Collected)
             {
@@ -55,7 +55,7 @@ public class KeyController : MonoBehaviour
                 OpenUIPanel();
                 gameObject.SetActive(false);
                 lockedImg2.SetActive(false);
-                SpawnStarPartickle();
+                SpawnUnlockPartickle();
             }
         }
     }
@@ -68,7 +68,7 @@ public class KeyController : MonoBehaviour
         }
     }
 
-    void SpawnStarPartickle()
+    void SpawnUnlockPartickle()
     {
         if(!lockedImg1.activeSelf)
         {
