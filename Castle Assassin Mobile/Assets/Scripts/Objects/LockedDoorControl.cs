@@ -36,5 +36,6 @@ public class LockedDoorControl : MonoBehaviour
     void LockedColliderDisabled()
     {
         doorCollider.enabled = false;
+        doorCollider.isTrigger = true;
     }
 }
