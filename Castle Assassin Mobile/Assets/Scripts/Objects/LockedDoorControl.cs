@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LockedDoorControl : MonoBehaviour
 {
     private Collider doorCollider; 
-
     public KeyController keyController;
+    
+
 
     void Start()
     {

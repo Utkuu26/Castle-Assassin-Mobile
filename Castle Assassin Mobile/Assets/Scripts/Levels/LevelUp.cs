@@ -9,7 +9,7 @@ public class LevelUp : MonoBehaviour
     public static event LevelUpHandler OnLevelUp;
 
     public TextMeshProUGUI playerLvlTxt;
-    public GameObject particleEffectPrefab; 
+    public GameObject starParticklePrefab; 
 
     private int playerLvl = 0;
 
@@ -25,7 +25,7 @@ public class LevelUp : MonoBehaviour
             playerLvl = playerLvl + 5;
             playerLvlTxt.text = ("Level " + playerLvl);
 
-            SpawnParticleEffect();
+            SpawnStarPartickle();
             Destroy(gameObject); 
 
             // LevelUp event'ini tetikle
@@ -34,9 +34,9 @@ public class LevelUp : MonoBehaviour
         }
     }
 
-    void SpawnParticleEffect()
+    void SpawnStarPartickle()
     {
-        GameObject particleEffect = Instantiate(particleEffectPrefab, transform.position, Quaternion.identity);
+        GameObject particleEffect = Instantiate(starParticklePrefab, transform.position, Quaternion.identity);
         Destroy(particleEffect, 2f);
     }
 }

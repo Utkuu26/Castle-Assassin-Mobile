@@ -1,19 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemiesMustKill : MonoBehaviour
 {
     private Collider lockedDoorCollider;
-    public EnemyAttack enemyAttack;
+    public EnemyAttack[] enemies;
     public int deadEnemies = 0;
 
     void Start()
     {
-        // EnemyAttack sınıfındaki event'e abone ol
-        EnemyAttack.OnEnemyDied += UpdateDeadEnemies;
+        // Kapının Collider'ını al
         lockedDoorCollider = GetComponent<Collider>();
         lockedDoorCollider.enabled = true;
+
+        // Her düşmanı takip etmek için event'e abone ol
+        foreach (EnemyAttack enemy in enemies)
+        {
+            // Her düşmanın event'ine abone ol
+            EnemyAttack.OnEnemyDied += UpdateDeadEnemies;
+        }
     }
 
     // EnemyAttack sınıfındaki event tetiklendiğinde çağrılacak fonksiyon
@@ -36,6 +40,12 @@ public class EnemiesMustKill : MonoBehaviour
     // Abonelikten kaldırma işlemi
     private void OnDestroy()
     {
-        EnemyAttack.OnEnemyDied -= UpdateDeadEnemies;
+        // Her düşmandan aboneliği kaldır
+        foreach (EnemyAttack enemy in enemies)
+        {
+            // Her düşmanın event'inden aboneliği kaldır
+            EnemyAttack.OnEnemyDied -= UpdateDeadEnemies;
+
+        }
     }
 }

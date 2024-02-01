@@ -12,13 +12,24 @@ public class KeyController : MonoBehaviour
     private bool key1Collected = false;
     private bool key2Collected = false;
 
+    public GameObject lockedImg1;
+    public GameObject lockedImg2;
     public bool isDoorLocked = true;
+
+    public GameObject lockParticklePrefab; 
+    public GameObject keyParticklePrefab; 
 
     void Start()
     {
         uiPanel.SetActive(false);
         keyImg1.SetActive(false);
         keyImg2.SetActive(false);
+
+        if(lockedImg1 != null && lockedImg2 != null)
+        {
+            lockedImg1.SetActive(true);
+            lockedImg2.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,18 +38,24 @@ public class KeyController : MonoBehaviour
         {
             if (gameObject.CompareTag("Key1") && !key1Collected)
             {
+                SpawnKeyPartickle();
                 key1Collected = true;
                 keyImg1.SetActive(true);
                 OpenUIPanel();
                 gameObject.SetActive(false);
+                lockedImg1.SetActive(false);
+                SpawnStarPartickle();
             }
             else if (gameObject.CompareTag("Key2") && !key2Collected)
             {
+                SpawnKeyPartickle();
                 isDoorLocked = false;
                 key2Collected = true;
                 keyImg2.SetActive(true);
                 OpenUIPanel();
                 gameObject.SetActive(false);
+                lockedImg2.SetActive(false);
+                SpawnStarPartickle();
             }
         }
     }
@@ -49,6 +66,26 @@ public class KeyController : MonoBehaviour
         {
             uiPanel.SetActive(true);
         }
+    }
+
+    void SpawnStarPartickle()
+    {
+        if(!lockedImg1.activeSelf)
+        {
+            GameObject particleEffect = Instantiate(lockParticklePrefab, lockedImg1.transform.position, Quaternion.identity);
+            Destroy(particleEffect, 2f);
+        }
+        else if(!lockedImg2.activeSelf)
+        {
+            GameObject particleEffect = Instantiate(lockParticklePrefab, lockedImg2.transform.position, Quaternion.identity);
+            Destroy(particleEffect, 2f);
+        }
+    }
+
+    void SpawnKeyPartickle()
+    {
+        GameObject particleEffect = Instantiate(keyParticklePrefab, transform.position, Quaternion.identity);
+        Destroy(particleEffect, 2f);
     }
 
 }

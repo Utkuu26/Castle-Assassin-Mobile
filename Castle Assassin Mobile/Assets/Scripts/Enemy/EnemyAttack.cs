@@ -18,6 +18,7 @@ public class EnemyAttack : MonoBehaviour
     public TextMeshProUGUI enemyLvlTxt; 
     public PlayerLevel playerLevel;
     public int deadEnemies = 0;
+    //public GameObject bloodParticklePrefab;
 
     void Start()
     {
@@ -29,11 +30,16 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.CompareTag("Trigger")) 
         {
-            if (enemyPatrol != null && (enemyLvl > playerLevel.playerLvl))
+            if (enemyLvl > playerLevel.playerLvl)
             {
                 enemyPatrol.StopPatrol();
                 enemyAnimator.SetBool("isEnemyAttack", true);
-                OnEnemyDied(deadEnemies);
+                
+                // Eğer OnEnemyDied event'ine bir abone varsa
+                if (OnEnemyDied != null)
+                {
+                    OnEnemyDied(deadEnemies);
+                }
 
                 characterController.enabled = false;
                 playerAnimator.SetBool("isPlayerDying", true);
@@ -44,7 +50,9 @@ public class EnemyAttack : MonoBehaviour
             {
                 enemyPatrol.StopPatrol();
                 playerAnimator.SetBool("isPlayerAttacking", true);
+                //SpawnBloodPartickle();
                 enemyAnimator.SetBool("isEnemyScared", true);
+                playerAnimator.SetBool("isPlayerAttacking", false);
                 
                 Invoke("EnemyKilled", 1f);
             }
@@ -67,4 +75,9 @@ public class EnemyAttack : MonoBehaviour
         playerAnimator.SetBool("isPlayerAttacking", false);
     }
 
+    // void SpawnBloodPartickle()
+    // {
+    //     GameObject particleEffect = Instantiate(bloodParticklePrefab, transform.position, Quaternion.identity);
+    //     Destroy(particleEffect, 4f);
+    // }
 }
