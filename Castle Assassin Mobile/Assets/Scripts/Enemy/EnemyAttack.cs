@@ -10,6 +10,8 @@ public class EnemyAttack : MonoBehaviour
     public static event EnemieDiedHandler OnEnemyDied;
     
     public EnemyPatrol enemyPatrol;
+    public Hide hide;
+
     public Animator enemyAnimator;
     public Animator playerAnimator;
     public CharacterController characterController;
@@ -28,7 +30,7 @@ public class EnemyAttack : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Trigger")) 
+        if (other.CompareTag("Trigger") && !hide.isHidden) 
         {
             if (enemyLvl > playerLevel.playerLvl)
             {

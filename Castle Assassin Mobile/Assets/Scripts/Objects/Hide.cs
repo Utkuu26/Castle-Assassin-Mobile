@@ -4,7 +4,7 @@ using UnityEngine;
 public class Hide : MonoBehaviour
 {
     public Transform teleportTarget; // Belirli bir hedef noktası
-    private bool isHidden;
+    public bool isHidden;
     private bool isJoystickEnabled = true; // Joystick etkileşimini kontrol etmek için
     public GameObject player;
     public GameObject barrelTxt;
@@ -49,7 +49,7 @@ public class Hide : MonoBehaviour
     
         if (teleportTarget != null)
         {
-            player.transform.position = teleportTarget.position;
+            player.transform.position = new Vector3(player.transform.position.x+ 2f, player.transform.position.y, player.transform.position.z+ 1f);
         }
     }
 
