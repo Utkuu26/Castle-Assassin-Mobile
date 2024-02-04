@@ -20,12 +20,17 @@ public class EnemyAttack : MonoBehaviour
     public TextMeshProUGUI enemyLvlTxt; 
     public PlayerLevel playerLevel;
     public int deadEnemies = 0;
-    //public GameObject bloodParticklePrefab;
+
+    public AudioSource enemyAudioSource;
+    public AudioClip enemyLaughSfx;
+    public AudioClip enemyDiedSfx;
+    public AudioClip axeSwipeSfx;
 
     void Start()
     {
         loseGamePanel.SetActive(false);
         enemyLvlTxt.text = ("Level " + enemyLvl);
+        enemyAudioSource = gameObject.AddComponent<AudioSource>();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -36,6 +41,10 @@ public class EnemyAttack : MonoBehaviour
             {
                 enemyPatrol.StopPatrol();
                 enemyAnimator.SetBool("isEnemyAttack", true);
+
+                enemyAudioSource.clip = enemyLaughSfx;
+                enemyAudioSource.Play();
+                Invoke("PlayAxeSwipeSFX", 1f);
                 
                 // Eğer OnEnemyDied event'ine bir abone varsa
                 if (OnEnemyDied != null)
@@ -46,13 +55,18 @@ public class EnemyAttack : MonoBehaviour
                 characterController.enabled = false;
                 playerAnimator.SetBool("isPlayerDying", true);
 
+                
+
                 Invoke("ShowLoseGamePanel", 3f);
             }
             else if (enemyLvl < playerLevel.playerLvl)
             {
                 enemyPatrol.StopPatrol();
                 playerAnimator.SetBool("isPlayerAttacking", true);
-                //SpawnBloodPartickle();
+
+                enemyAudioSource.clip = enemyDiedSfx;
+                enemyAudioSource.Play();
+
                 enemyAnimator.SetBool("isEnemyScared", true);
                 playerAnimator.SetBool("isPlayerAttacking", false);
 
@@ -78,6 +92,12 @@ public class EnemyAttack : MonoBehaviour
     void EnemyKilled()
     {
         playerAnimator.SetBool("isPlayerAttacking", false);
+    }
+
+    void PlayAxeSwipeSFX()
+    {       
+        enemyAudioSource.clip = axeSwipeSfx;
+        enemyAudioSource.Play();
     }
 
     // void SpawnBloodPartickle()
