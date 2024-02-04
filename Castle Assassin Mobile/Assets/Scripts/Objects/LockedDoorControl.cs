@@ -7,8 +7,6 @@ public class LockedDoorControl : MonoBehaviour
 {
     private Collider doorCollider; 
     public KeyController keyController;
-    
-
 
     void Start()
     {

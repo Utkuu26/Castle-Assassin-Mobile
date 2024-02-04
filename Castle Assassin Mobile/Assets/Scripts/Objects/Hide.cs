@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Hide : MonoBehaviour
 {
-    public Transform teleportTarget; // Belirli bir hedef noktası
+    public Transform teleportTarget; 
     public bool isHidden;
-    private bool isJoystickEnabled = true; // Joystick etkileşimini kontrol etmek için
+    private bool isJoystickEnabled = true; 
     public GameObject player;
     public GameObject barrelTxt;
 
@@ -21,7 +21,7 @@ public class Hide : MonoBehaviour
         {
             HidePlayer();
             barrelTxt.SetActive(true);
-            StartCoroutine(DisableJoystickForDuration(1f)); // Joystick'i belirli bir süre için devre dışı bırak
+            StartCoroutine(DisableJoystickForDuration(1f)); 
         }
     }
 

@@ -15,12 +15,7 @@ public class PlayerLevel : MonoBehaviour
     // LevelUp sınıfındaki event tetiklendiğinde çağrılacak fonksiyon
     private void UpdatePlayerLevel(int newLevel)
     {
-        // playerLvl değerini güncelle
         playerLvl = newLevel;
-
-        // Diğer işlemleri burada gerçekleştir
-        // Örneğin:
-        // Debug.Log("Player Level Updated: " + playerLvl);
     }
 
     // Abonelikten kaldırma işlemi

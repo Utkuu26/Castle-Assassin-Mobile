@@ -19,6 +19,9 @@ public class KeyController : MonoBehaviour
     public GameObject lockParticklePrefab; 
     public GameObject keyParticklePrefab; 
 
+    public AudioSource keyAudioSource;
+    public AudioClip keySfx;
+
     void Start()
     {
         uiPanel.SetActive(false);
@@ -45,6 +48,7 @@ public class KeyController : MonoBehaviour
                 gameObject.SetActive(false);
                 lockedImg1.SetActive(false);
                 SpawnUnlockPartickle();
+                PlaykeySfx();
             }
             else if (gameObject.CompareTag("Key2") && !key2Collected)
             {
@@ -56,6 +60,7 @@ public class KeyController : MonoBehaviour
                 gameObject.SetActive(false);
                 lockedImg2.SetActive(false);
                 SpawnUnlockPartickle();
+                PlaykeySfx();
             }
         }
     }
@@ -86,6 +91,12 @@ public class KeyController : MonoBehaviour
     {
         GameObject particleEffect = Instantiate(keyParticklePrefab, transform.position, Quaternion.identity);
         Destroy(particleEffect, 2f);
+    }
+
+    void PlaykeySfx()
+    {
+        keyAudioSource.clip = keySfx;
+        keyAudioSource.Play();
     }
 
 }

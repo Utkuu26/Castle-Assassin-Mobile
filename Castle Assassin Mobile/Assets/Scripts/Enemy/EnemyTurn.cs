@@ -13,21 +13,12 @@ public class EnemyTurn : MonoBehaviour
     {
         enemyTransform = transform;
         initialRotation = enemyTransform.rotation;
-        InvokeRepeating("ToggleRotateState", 3f, 6f); // Her 3 saniyede bir ToggleRotateState fonksiyonunu çağır
-    }
-
-    void Update()
-    {
-        if (!stopState)
-        {
-            // Düşmanın izleme mantığı burada implemente edilebilir
-            // Örneğin: enemyTransform.LookAt(targetPosition);
-        }
+        InvokeRepeating("ToggleRotateState", 3f, 6f); 
     }
 
     void ToggleRotateState()
     {
-        stopState = !stopState; // Döndürme durumunu tersine çevir
+        stopState = !stopState; 
 
         if (stopState)
         {
@@ -52,7 +43,7 @@ public class EnemyTurn : MonoBehaviour
             yield return null;
         }
 
-        enemyTransform.rotation = targetRotation; // Kesin rotasyonu ayarla
+        enemyTransform.rotation = targetRotation; 
     }
 
     IEnumerator RotateToInitialPosition()
@@ -68,6 +59,6 @@ public class EnemyTurn : MonoBehaviour
             yield return null;
         }
 
-        enemyTransform.rotation = targetRotation; // Kesin rotasyonu ayarla
+        enemyTransform.rotation = targetRotation; 
     }
 }

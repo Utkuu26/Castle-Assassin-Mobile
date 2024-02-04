@@ -25,6 +25,8 @@ public class EnemyAttack : MonoBehaviour
     public AudioClip enemyLaughSfx;
     public AudioClip enemyDiedSfx;
     public AudioClip axeSwipeSfx;
+    public AudioClip losePanelSfx;
+
 
     void Start()
     {
@@ -55,8 +57,6 @@ public class EnemyAttack : MonoBehaviour
                 characterController.enabled = false;
                 playerAnimator.SetBool("isPlayerDying", true);
 
-                
-
                 Invoke("ShowLoseGamePanel", 3f);
             }
             else if (enemyLvl < playerLevel.playerLvl)
@@ -82,6 +82,8 @@ public class EnemyAttack : MonoBehaviour
     {
         loseGamePanel.SetActive(true);
         playerAnimator.SetBool("isPlayerDying", false);
+        enemyAudioSource.clip = losePanelSfx;
+        enemyAudioSource.Play();
     }
 
     public void TryAgain()

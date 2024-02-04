@@ -13,6 +13,9 @@ public class LevelUp : MonoBehaviour
 
     private int playerLvl = 0;
 
+    public AudioSource lvlUpAudioSource;
+    public AudioClip lvlUpSfx;
+
     void Start()
     {
         playerLvlTxt.text = ("Level " + (playerLvl + 1));
@@ -27,6 +30,9 @@ public class LevelUp : MonoBehaviour
 
             SpawnStarPartickle();
             Destroy(gameObject); 
+
+            lvlUpAudioSource.clip = lvlUpSfx;
+            lvlUpAudioSource.Play();
 
             // LevelUp event'ini tetikle
             if (OnLevelUp != null)

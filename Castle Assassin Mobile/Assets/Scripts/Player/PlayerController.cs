@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Check if _mngrJoystick is not null before accessing its properties
         if (_mngrJoystick != null)
         {
             inputX = _mngrJoystick.direction.x;

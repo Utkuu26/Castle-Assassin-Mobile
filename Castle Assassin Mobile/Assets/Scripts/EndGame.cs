@@ -11,10 +11,14 @@ public class EndGame : MonoBehaviour
     public CharacterController characterController;
     public Button continueBtn;
     public GameObject playerGameObject;
-    //public Transform nextLevelSpawnPoint;
     public Transform[] nextLevelSpawnPoints;
     private int currentSpawnPointIndex = 0;
     public LevelCounter levelCounter;
+    public AudioSource endGameAudioSource;
+    public AudioClip endGamePanelSfx;
+    public AudioSource continueBtnAudioSource;
+    public AudioClip btnSfx;
+
 
     void Start() 
     {
@@ -34,13 +38,17 @@ public class EndGame : MonoBehaviour
             characterController.enabled = false;
             endGamePanel.SetActive(true);
             levelCounter.UpdateWinScreenLevel();
+
+            endGameAudioSource.clip = endGamePanelSfx;
+            endGameAudioSource.Play();
         }
     }
 
     void NextLevel()
     {
-        //playerGameObject.transform.position = nextLevelSpawnPoint.position;
-        
+        continueBtnAudioSource.clip = btnSfx;
+        continueBtnAudioSource.Play();
+
         Transform nextSpawnPoint = nextLevelSpawnPoints[currentSpawnPointIndex];
         playerGameObject.transform.position = nextSpawnPoint.position;
         currentSpawnPointIndex = (currentSpawnPointIndex + 1) % nextLevelSpawnPoints.Length;

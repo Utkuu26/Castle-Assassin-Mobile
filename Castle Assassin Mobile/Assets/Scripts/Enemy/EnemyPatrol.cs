@@ -12,7 +12,6 @@ public class EnemyPatrol : MonoBehaviour
 
     float currentSpeed;
     private Animator enemyAnimator;
-    //private Transform textTransform;
 
     private bool isPatrolling = true;
 
@@ -20,10 +19,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         currentPoint = 0;
         currentSpeed = minPatrolSpeed;
-
         enemyAnimator = GetComponent<Animator>();
-        //textTransform = transform.Find("EnemyTxt").transform;
-
         StartCoroutine(PatrolRoutine());
     }
 
@@ -66,11 +62,7 @@ public class EnemyPatrol : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10.0f);
             }
-
-            // Text'in konumunu güncelle (Y ekseni sabit kalmalı)
-           // Vector3 textPosition = new Vector3(textTransform.position.x, textTransform.position.y, textTransform.position.z);
-           // textTransform.position = textPosition;
-
+            
             yield return null;
         }
 

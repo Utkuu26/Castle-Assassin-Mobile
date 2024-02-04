@@ -36,7 +36,6 @@ public class EnemiesMustKill : MonoBehaviour
         // deadEnemies değerini güncelle
         this.deadEnemies = diedEnemies;
 
-        // deadEnemies 2 ise kapıyı kapat
         if (this.deadEnemies == 1)
         {
             SpawnUnlockPartickle();
