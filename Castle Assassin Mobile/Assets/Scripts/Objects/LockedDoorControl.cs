@@ -8,6 +8,9 @@ public class LockedDoorControl : MonoBehaviour
     private Collider doorCollider; 
     public KeyController keyController;
 
+    public AudioSource lockedDoorAudioSource;
+    public AudioClip lockedDoorSfx;
+
     void Start()
     {
         doorCollider = GetComponent<Collider>();
@@ -29,6 +32,15 @@ public class LockedDoorControl : MonoBehaviour
     void LockedColliderEnabled()
     {
         doorCollider.enabled = true;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Trigger"))
+        {
+            lockedDoorAudioSource.clip = lockedDoorSfx;
+            lockedDoorAudioSource.Play();
+        }
     }
 
     void LockedColliderDisabled()
