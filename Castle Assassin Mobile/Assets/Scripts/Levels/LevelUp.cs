@@ -11,6 +11,7 @@ public class LevelUp : MonoBehaviour
     public TextMeshProUGUI playerLvlTxt;
     public GameObject starParticklePrefab; 
     private static int playerLvl = 0;
+    public GameObject maxlvlTxt;
 
     public AudioSource lvlUpAudioSource;
     public AudioClip lvlUpSfx;
@@ -18,15 +19,23 @@ public class LevelUp : MonoBehaviour
     void Start()
     {
         playerLvlTxt.text = ("Level " + playerLvl);
+        maxlvlTxt.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Trigger"))
         {
-            playerLvl = playerLvl + 5;
-            playerLvlTxt.text = ("Level " + playerLvl);
-
+            if (playerLvl <= 10)
+            {
+                playerLvl = playerLvl + 5;
+                playerLvlTxt.text = ("Level " + playerLvl);
+            }
+            else
+            {
+                maxlvlTxt.SetActive(true);
+            }
+            
             SpawnStarPartickle();
             Destroy(gameObject); 
 
