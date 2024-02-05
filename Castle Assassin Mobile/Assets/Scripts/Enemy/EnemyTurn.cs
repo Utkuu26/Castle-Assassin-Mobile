@@ -8,25 +8,33 @@ public class EnemyTurn : MonoBehaviour
     private Quaternion initialRotation;
     private bool stopState = false;
     private float rotationSpeed = 90f;
+    public GameObject turnedEnemy;
 
     void Start()
     {
         enemyTransform = transform;
         initialRotation = enemyTransform.rotation;
-        InvokeRepeating("ToggleRotateState", 3f, 6f); 
+
+        if(turnedEnemy != null && turnedEnemy.activeSelf)
+        {
+            InvokeRepeating("ToggleRotateState", 3f, 6f); 
+        }
     }
 
     void ToggleRotateState()
     {
-        stopState = !stopState; 
+        if (turnedEnemy != null && turnedEnemy.activeSelf)
+        {
+            stopState = !stopState;
 
-        if (stopState)
-        {
-            StartCoroutine(Rotate180Degrees());
-        }
-        else
-        {
-            StartCoroutine(RotateToInitialPosition());
+            if (stopState)
+            {
+                StartCoroutine(Rotate180Degrees());
+            }
+            else
+            {
+                StartCoroutine(RotateToInitialPosition());
+            }
         }
     }
 
