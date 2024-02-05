@@ -10,15 +10,14 @@ public class LevelUp : MonoBehaviour
 
     public TextMeshProUGUI playerLvlTxt;
     public GameObject starParticklePrefab; 
-
-    private int playerLvl = 0;
+    private static int playerLvl = 0;
 
     public AudioSource lvlUpAudioSource;
     public AudioClip lvlUpSfx;
 
     void Start()
     {
-        playerLvlTxt.text = ("Level " + (playerLvl + 1));
+        playerLvlTxt.text = ("Level " + playerLvl);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,5 +43,10 @@ public class LevelUp : MonoBehaviour
     {
         GameObject particleEffect = Instantiate(starParticklePrefab, transform.position, Quaternion.identity);
         Destroy(particleEffect, 2f);
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 }

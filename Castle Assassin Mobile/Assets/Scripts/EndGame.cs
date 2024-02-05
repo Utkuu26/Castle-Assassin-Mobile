@@ -16,8 +16,6 @@ public class EndGame : MonoBehaviour
     public LevelCounter levelCounter;
     public AudioSource endGameAudioSource;
     public AudioClip endGamePanelSfx;
-    public AudioSource continueBtnAudioSource;
-    public AudioClip btnSfx;
 
 
     void Start() 
@@ -46,9 +44,6 @@ public class EndGame : MonoBehaviour
 
     void NextLevel()
     {
-        continueBtnAudioSource.clip = btnSfx;
-        continueBtnAudioSource.Play();
-
         Transform nextSpawnPoint = nextLevelSpawnPoints[currentSpawnPointIndex];
         playerGameObject.transform.position = nextSpawnPoint.position;
         currentSpawnPointIndex = (currentSpawnPointIndex + 1) % nextLevelSpawnPoints.Length;
